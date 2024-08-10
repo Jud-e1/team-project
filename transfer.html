@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Exchange</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .exchange-container,
+        .fee-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .exchange-row {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .currency-flag {
+            width: 30px;
+            height: 20px;
+        }
+        
+        .currency-amount {
+            font-size: 18px;
+            color: #333;
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .currency-code {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .fee-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .continue-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .continue-btn:hover {
+            background-color: #0056b3;
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .exchange-container,
+            .fee-container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="exchange-container">
+            <h2>Send</h2>
+            <div class="exchange-row">
+                <img src="us-flag.png" alt="US Flag" class="currency-flag">
+                <input type="number" id="usd-amount" class="currency-amount" placeholder="0.00" min="0" step="0.01">
+                <span class="currency-code">USD</span>
+            </div>
+        </div>
+
+        <div class="exchange-container">
+            <h2>Receive</h2>
+            <div class="exchange-row">
+                <img src="german-flag.png" alt="German Flag" class="currency-flag">
+                <input type="number" id="eur-amount" class="currency-amount" placeholder="0.00" readonly>
+                <span class="currency-code">EUR</span>
+            </div>
+        </div>
+
+        <div class="fee-container">
+            <div class="fee-row">
+                <span>Fee</span>
+                <span id="fee">0.00 USD</span>
+            </div>
+            <div class="fee-row">
+                <span>Fee discount</span>
+                <span id="fee-discount">0.00 USD</span>
+            </div>
+            <div class="fee-row">
+                <span><strong>Total</strong></span>
+                <span id="total"><strong>0.00 USD</strong></span>
+            </div>
+        </div>
+
+        <button class="continue-btn" id="continue-btn">Continue</button>
+    </div>
+
+    <script>
+        const usdInput = document.getElementById('usd-amount');
+        const eurInput = document.getElementById('eur-amount');
+        const feeElement = document.getElementById('fee');
+        const feeDiscountElement = document.getElementById('fee-discount');
+        const totalElement = document.getElementById('total');
+        const continueBtn = document.getElementById('continue-btn');
+
+        const exchangeRate = 0.85; // 1 USD = 0.85 EUR
+        const feePercentage = 0.02; // 2% fee
+        const feeDiscountPercentage = 0.005; // 0.5% fee discount
+
+        usdInput.addEventListener('input', updateValues);
+
+        function updateValues() {
+            const usdAmount = parseFloat(usdInput.value) || 0;
+            const eurAmount = usdAmount * exchangeRate;
+            const fee = usdAmount * feePercentage;
+            const feeDiscount = usdAmount * feeDiscountPercentage;
+            const total = usdAmount + fee - feeDiscount;
+
+            eurInput.value = eurAmount.toFixed(2);
+            feeElement.textContent = fee.toFixed(2) + ' USD';
+            feeDiscountElement.textContent = feeDiscount.toFixed(2) + ' USD';
+            totalElement.textContent = total.toFixed(2) + ' USD';
+
+            continueBtn.disabled = usdAmount <= 0;
+        }
+
+        continueBtn.addEventListener('click', () => {
+            alert('Transaction processed!');
+        });
+
+        updateValues();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipient Bank Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0080FF;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 80%;
+            max-width: 300px;
+        }
+        h1 {
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Recipient Bank Details</h1>
+        <form>
+            <label for="account-number">Account number</label>
+            <input type="text" id="account-number" name="account-number">
+            <button type="submit">Continue</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Method</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        .option {
+            background-color: white;
+            color: black;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .option img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+        
+        .card-info {
+            background-color: white;
+            color: black;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .card-info input,
+        .card-info select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        
+        .card-info .row {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .card-info .row input {
+            width: 48%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Delivery method How would you like the money delivered?</h1>
+
+    <div class="option">
+        <img src="bank-icon.png" alt="Bank"> Bank Deposit
+    </div>
+
+    <div class="option">
+        <img src="wallet-icon.png" alt="Wallet"> Mobile Wallet
+    </div>
+
+    <div class="card-info">
+        <h2>Card information</h2>
+        <input type="text" placeholder="Number">
+        <div class="row">
+            <input type="text" placeholder="MM/YY">
+            <input type="text" placeholder="Cvv">
+        </div>
+        <select>
+            <option>Select Location</option>
+        </select>
+        <input type="text" placeholder="Zip">
+    </div>
+</body>
+
+</html>

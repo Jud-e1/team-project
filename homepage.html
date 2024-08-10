@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Banking App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+         :root {
+            --primary-color: #1e88e5;
+            --secondary-color: #f5f5f5;
+            --text-color: #333;
+            --background-color: #ffffff;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .menu-icon,
+        .profile-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 20px;
+            position: relative;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: none;
+            background-color: var(--secondary-color);
+            font-size: 16px;
+        }
+        
+        .search-bar::before {
+            content: "🔍";
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .balance-card {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .balance-card h2 {
+            margin: 0;
+            font-weight: 500;
+        }
+        
+        .balance-card h1 {
+            margin: 10px 0 0;
+            font-size: 36px;
+            font-weight: 700;
+        }
+        
+        .actions {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .action-button {
+            text-align: center;
+            padding: 15px 10px;
+            background-color: var(--secondary-color);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .action-button:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .action-button i {
+            font-size: 24px;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .offers {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .offer-card {
+            background-color: var(--secondary-color);
+            padding: 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .offer-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .offer-card h3 {
+            margin: 0 0 10px;
+            font-weight: 500;
+        }
+        
+        .offer-card p {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .actions {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .actions {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .offers {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="menu-icon">☰</div>
+            <div class="search-bar">
+                <input type="text" placeholder="AI Search">
+            </div>
+            <div class="profile-icon">👤</div>
+        </div>
+        <div class="balance-card">
+            <h2>Total Balance</h2>
+            <h1 id="balance">$0.00</h1>
+        </div>
+        <div class="actions">
+            <div class="action-button">
+                <i>💰</i>
+                <div>Deposit</div>
+            </div>
+            <div class="action-button">
+                <i>↗️</i>
+                <div>Send</div>
+            </div>
+            <div class="action-button">
+                <i>🏦</i>
+                <div>Save</div>
+            </div>
+            <div class="action-button">
+                <i>📈</i>
+                <div>Invest</div>
+            </div>
+        </div>
+        <h2>Offers & Services</h2>
+        <div class="offers">
+            <div class="offer-card">
+                <h3>Goal-based Savings</h3>
+                <p>Set targets and save smart</p>
+            </div>
+            <div class="offer-card">
+                <h3>AI-powered Investing</h3>
+                <p>Let AI optimize your portfolio</p>
+            </div>
+            <div class="offer-card">
+                <h3>Retirement Planning</h3>
+                <p>Secure your future today</p>
+            </div>
+            <div class="offer-card">
+                <h3>AI Financial Advisor</h3>
+                <p>Get personalized advice 24/7</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const balanceElement = document.getElementById('balance');
+            let balance = 1000; // Starting balance
+
+            function updateBalance() {
+                balance += Math.random() * 10 - 5; // Random fluctuation
+                balanceElement.textContent = '$ ' + balance.toFixed(2);
+            }
+
+            setInterval(updateBalance, 3000); // Update balance every 3 seconds
+
+            // AI Search functionality
+            const searchInput = document.querySelector('.search-bar input');
+            searchInput.addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    const query = this.value.toLowerCase();
+                    if (query.includes('balance')) {
+                        alert('Your current balance is $ ' + balance.toFixed(2));
+                    } else if (query.includes('transfer') || query.includes('send')) {
+                        alert('To transfer money, please use the Send button in the actions menu.');
+                    } else if (query.includes('invest')) {
+                        alert('Check out our AI-powered Investing option in the Offers & Services section.');
+                    } else {
+                        alert('I'
+                            m sorry, I couldn 't understand your query. Please try again or use the action buttons for common tasks.');
+                    }
+                    this.value = '';
+                }
+            });
+
+            // Action button functionality
+            const actionButtons = document.querySelectorAll('.action-button');
+            actionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const action = this.textContent.trim();
+                    alert(`You've selected the ${action} action. This feature is coming soon!`);
+                });
+            });
+
+            // Offer card functionality
+            const offerCards = document.querySelectorAll('.offer-card');
+            offerCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const offerTitle = this.querySelector('h3').textContent;
+                    alert(`You're interested in ${offerTitle}. An AI assistant will contact you shortly with more information.`);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

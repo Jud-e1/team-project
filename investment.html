@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Selection</title>
+    <style>
+         :root {
+            --primary-color: #007bff;
+            --secondary-color: #0056b3;
+            --text-color: #333;
+            --background-color: #f4f7f9;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            width: 90%;
+            max-width: 500px;
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        p {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: white;
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                padding: 3rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 600px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Investment Options</h1>
+        <p>Select your preferred investment type and location</p>
+
+        <div class="form-group">
+            <label for="investment-type">Type of Investment</label>
+            <select id="investment-type">
+                <option value="" disabled selected>Select investment type</option>
+                <option value="bonds">Government Bonds</option>
+                <option value="corporate-bonds">Corporate Bonds</option>
+                <option value="stocks">Company Stocks</option>
+                <option value="etf">Exchange-Traded Funds (ETFs)</option>
+                <option value="mutual-funds">Mutual Funds</option>
+                <option value="real-estate">Real Estate Investment Trusts (REITs)</option>
+                <option value="commodities">Commodities</option>
+                <option value="crypto">Cryptocurrencies</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="investment-location">Investment Location</label>
+            <select id="investment-location">
+                <option value="" disabled selected>Select location</option>
+                <option value="usa">United States</option>
+                <option value="uk">United Kingdom</option>
+                <option value="eu">European Union</option>
+                <option value="china">China</option>
+                <option value="japan">Japan</option>
+                <option value="india">India</option>
+                <option value="brazil">Brazil</option>
+                <option value="australia">Australia</option>
+                <option value="global">Global Markets</option>
+            </select>
+        </div>
+
+        <button id="show-investment">Show Investment Options</button>
+    </div>
+
+    <script>
+        document.getElementById('show-investment').addEventListener('click', function() {
+            const investmentType = document.getElementById('investment-type').value;
+            const location = document.getElementById('investment-location').value;
+
+            if (investmentType && location) {
+                alert(`You selected ${investmentType} in ${location}. Showing available options...`);
+                // Here you would typically fetch and display the relevant investment options
+            } else {
+                alert('Please select both an investment type and a location.');
+            }
+        });
+    </script>
+</body>
+
+</html>

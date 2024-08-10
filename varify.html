@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #4DA3FF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .verification-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: rotate(-3deg);
+            transition: transform 0.3s ease;
+        }
+        
+        .verification-container:hover {
+            transform: rotate(0deg);
+        }
+        
+        h2 {
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: bold;
+        }
+        
+        .input-group label img {
+            margin-right: 10px;
+            width: 24px;
+            height: 24px;
+        }
+        
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        input:focus,
+        select:focus {
+            border-color: #4DA3FF;
+            outline: none;
+        }
+        
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #4DA3FF;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #3A8BE6;
+        }
+        
+        #error-message {
+            color: #ff4d4d;
+            margin-top: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 480px) {
+            .verification-container {
+                padding: 20px;
+            }
+            h2 {
+                font-size: 1.2em;
+            }
+            input,
+            select,
+            button {
+                font-size: 14px;
+            }
+        }
+        
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .verification-container {
+                max-width: 500px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="verification-container">
+        <h2>Verify Your Identity</h2>
+        <form id="verification-form">
+            <div class="input-group">
+                <label>
+                    <img src="globe-icon.png" alt="Country">
+                    Country
+                </label>
+                <select id="country" required>
+                    <option value="">Select your country</option>
+                    <option value="US">United States</option>
+                    <option value="UK">United Kingdom</option>
+                    <option value="CA">Canada</option>
+                    <!-- Add more countries as needed -->
+                </select>
+            </div>
+            <div class="input-group">
+                <label>
+                    <img src="id-icon.png" alt="ID Type">
+                    ID Type
+                </label>
+                <select id="id-type" required>
+                    <option value="">Select ID type</option>
+                    <option value="passport">Passport</option>
+                    <option value="national-id">National ID</option>
+                    <option value="drivers-license">Driver's License</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>
+                    <img src="id-number-icon.png" alt="ID Number">
+                    ID Number
+                </label>
+                <input type="text" id="id-number" placeholder="Enter your ID number" required>
+            </div>
+            <div class="input-group">
+                <label>
+                    <img src="email-icon.png" alt="Email">
+                    Verification Code
+                </label>
+                <input type="text" id="verification-code" placeholder="Enter the code sent to your email" required>
+            </div>
+            <button type="submit">Verify</button>
+        </form>
+        <div id="error-message"></div>
+    </div>
+
+    <script>
+        document.getElementById('verification-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const country = document.getElementById('country').value;
+            const idType = document.getElementById('id-type').value;
+            const idNumber = document.getElementById('id-number').value;
+            const verificationCode = document.getElementById('verification-code').value;
+            const errorMessage = document.getElementById('error-message');
+
+            // Simple validation
+            if (!country || !idType || !idNumber || !verificationCode) {
+                errorMessage.textContent = 'Please fill in all fields.';
+                return;
+            }
+
+            // ID number validation (example: at least 8 characters)
+            if (idNumber.length < 8) {
+                errorMessage.textContent = 'ID number must be at least 8 characters long.';
+                return;
+            }
+
+            // Verification code validation (example: must be 6 digits)
+            if (!/^\d{6}$/.test(verificationCode)) {
+                errorMessage.textContent = 'Verification code must be 6 digits.';
+                return;
+            }
+
+            // If all validations pass, you would typically send this data to a server
+            // For this example, we'll just show a success message
+            errorMessage.textContent = 'Verification successful!';
+            errorMessage.style.color = '#4CAF50';
+
+            // Simulate redirection after successful verification
+            setTimeout(() => {
+                alert('Redirecting to dashboard...');
+                // window.location.href = 'dashboard.html'; // Uncomment this line to actually redirect
+            }, 2000);
+        });
+    </script>
+</body>
+
+</html>

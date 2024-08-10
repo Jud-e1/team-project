@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp Now</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #007bff;
+            display: grid;
+            place-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .signup-container {
+            background-color: #007bff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 300px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #000000;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .login-options {
+            margin-top: 20px;
+            color: #ffffff;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+            margin: 0 10px;
+        }
+        
+        .error-message {
+            color: #ff4444;
+            font-size: 0.8em;
+            margin-top: 5px;
+        }
+        
+        .success-message {
+            color: #00ff00;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="signup-container">
+        <h1>SignUp Now</h1>
+        <form id="signup-form">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <div id="password-error" class="error-message"></div>
+            <button type="submit">Sign up</button>
+        </form>
+        <div id="success-message" class="success-message"></div>
+        <div class="login-options">
+            <p>Or login with</p>
+            <div class="social-icons">
+                <img src="google-icon.png" alt="Google">
+                <img src="apple-icon.png" alt="Apple">
+                <img src="facebook-icon.png" alt="Facebook">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('signup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const passwordError = document.getElementById('password-error');
+            const successMessage = document.getElementById('success-message');
+
+            // Email validation
+            if (!email.includes('@') || !email.includes('.')) {
+                passwordError.textContent = 'Please enter a valid email address.';
+                return;
+            }
+
+            // Password validation
+            const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{12,}$/;
+            if (!passwordRegex.test(password)) {
+                passwordError.textContent = 'Password must be at least 12 characters long, include one capital letter, and one number.';
+                return;
+            }
+
+            // If all validations pass
+            passwordError.textContent = '';
+            successMessage.textContent = 'Sign up successful! Welcome to our amazing app!';
+
+            // Here you would typically send the data to your server
+            console.log('Sign up data:', {
+                username: document.getElementById('username').value,
+                email: email,
+                password: password
+            });
+        });
+    </script>
+</body>
+
+</html>

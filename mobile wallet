@@ -1,0 +1,85 @@
+import React from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+
+const MobileWallet = () => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Mobile Wallet</Text>
+      
+      <TouchableOpacity style={styles.selectButton}>
+        <View style={styles.flagContainer}>
+          <Text style={styles.flagEmoji}>🇺🇸</Text>
+        </View>
+        <Text style={styles.selectButtonText}>Select Location</Text>
+        <Ionicons name="chevron-down" size={24} color="#888" />
+      </TouchableOpacity>
+      
+      <TouchableOpacity style={styles.selectButton}>
+        <View style={styles.walletIcon} />
+        <Text style={styles.selectButtonText}>Select Wallet</Text>
+        <Ionicons name="chevron-down" size={24} color="#888" />
+      </TouchableOpacity>
+      
+      <TouchableOpacity style={styles.continueButton}>
+        <Text style={styles.continueButtonText}>Continue</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#0080FF',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'white',
+    marginBottom: 40,
+  },
+  selectButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    borderRadius: 25,
+    padding: 15,
+    marginBottom: 20,
+    width: '100%',
+  },
+  flagContainer: {
+    marginRight: 10,
+  },
+  flagEmoji: {
+    fontSize: 20,
+  },
+  walletIcon: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    backgroundColor: '#DDD',
+    marginRight: 10,
+  },
+  selectButtonText: {
+    flex: 1,
+    color: '#888',
+  },
+  continueButton: {
+    backgroundColor: 'black',
+    borderRadius: 25,
+    padding: 15,
+    width: '100%',
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  continueButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
+});
+
+export default MobileWallet;

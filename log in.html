@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #3498db;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .login-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: #3498db;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .social-login {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            width: 30px;
+            height: 30px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        
+        #error-message {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        #signup-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        #signup-link a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 480px) {
+            .login-container {
+                width: 90%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>Login Now</h2>
+        <form id="login-form">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Sign in</button>
+        </form>
+        <div id="error-message"></div>
+        <div id="signup-link">
+            <a href="#">Don't have an account? Sign up</a>
+        </div>
+        <p style="text-align: center; color: #777;">Or login with</p>
+        <div class="social-login">
+            <img src="google-icon.png" alt="Google" class="social-icon">
+            <img src="apple-icon.png" alt="Apple" class="social-icon">
+            <img src="facebook-icon.png" alt="Facebook" class="social-icon">
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password');
+            const errorMessage = document.getElementById('error-message');
+
+            // Simple email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                errorMessage.textContent = 'Please enter a valid email address.';
+                return;
+            }
+
+            // Simple password validation (at least 8 characters)
+            if (password.value.length < 8) {
+                errorMessage.textContent = 'Password must be at least 8 characters long.';
+                return;
+            }
+
+            // If validation passes, you would typically send this data to a server
+            // For this example, we'll just show a success message
+            errorMessage.textContent = 'Login successful!';
+            errorMessage.style.color = 'green';
+        });
+
+        document.getElementById('signup-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Sign up functionality would be implemented here.');
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Deposit</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0066cc;
+            color: white;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .search-container {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 20px;
+            border: none;
+        }
+        .bank-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .bank-item {
+            background-color: white;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .bank-icon {
+            width: 30px;
+            height: 30px;
+            background-color: #ddd;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .view-more {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 20px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bank Deposit</h1>
+    <h2>Select your recipient's bank</h2>
+    
+    <div class="search-container">
+        <input type="text" placeholder="Search">
+    </div>
+    
+    <ul class="bank-list">
+        <li class="bank-item"><div class="bank-icon"></div></li>
+        <li class="bank-item"><div class="bank-icon"></div></li>
+        <li class="bank-item"><div class="bank-icon"></div></li>
+        <li class="bank-item"><div class="bank-icon"></div></li>
+        <li class="bank-item"><div class="bank-icon"></div></li>
+        <li class="bank-item"><div class="bank-icon"></div></li>
+        <li class="bank-item"><div class="bank-icon"></div></li>
+    </ul>
+    
+    <button class="view-more">view more</button>
+</body>
+</html>
